@@ -1,15 +1,51 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    Guest guest1 = new Guest("Adéla", "Malíková",
+            LocalDate.of(1993,3,13));
+    Guest guest2 = new Guest("Jana", "Dvořáčková",
+            LocalDate.of(1995,5,5));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+    List<Guest> guestList = new ArrayList<>();
+    guestList.add(guest1);
+    guestList.add(guest2);
+
+    for (Guest guest : guestList){
+        System.out.println(guest.getName()+ " "+ guest.getSurname());
     }
+
+    Room room1 = new Room(10);
+    Room room2 = new Room(20);
+    Room room3 = new Room(30,3,2400,false,
+            true);
+
+    List<Room> roomList = new ArrayList<>();
+    roomList.add(room1);
+    roomList.add(room2);
+    roomList.add(room3);
+
+    // Datumy první rezervace
+    Date startDate1 = new Date(2021,6,1);
+    Date endDate1 = new Date(2021,6, 19);
+
+    // Datumy druhé rezervace
+    Date startDate2 = new Date(2021,8,1);
+    Date endDate2 = new Date(2021,8,14);
+
+    //Vytvoření rezervace
+    Booking firstBooking = new Booking(room1,guest1,startDate1,endDate1);
+
+    ReservationSystem reservationSystem = new ReservationSystem();
+    reservationSystem.addBooking(firstBooking);
+
+    reservationSystem.printAllBooking();
+    }
+
 }
