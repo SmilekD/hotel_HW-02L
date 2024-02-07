@@ -3,6 +3,7 @@
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -38,14 +39,25 @@ public class Main {
     // Datumy druhé rezervace
     Date startDate2 = new Date(2021,8,1);
     Date endDate2 = new Date(2021,8,14);
+    // Druhá rezervace
+    //List<Guest> moreGuests = new ArrayList<>();
+    //moreGuests.add(guest1);
+    //moreGuests.add(guest2);
+
+    List<Guest> moreGuests = Arrays.asList(guest1,guest2);
 
     //Vytvoření rezervace
-    Booking firstBooking = new Booking(room1,guest1,startDate1,endDate1);
+    Booking firstBooking = new Booking(room1,guest1,startDate1,endDate1, "Rekreace");
+
+    //Booking secondBooking = new Booking(room2,moreGuests,startDate2,endDate2);
+    Booking secondBooking = new Booking(room3,moreGuests,startDate2,endDate2,"Rekreace");
 
     ReservationSystem reservationSystem = new ReservationSystem();
     reservationSystem.addBooking(firstBooking);
+    reservationSystem.addBooking(secondBooking);
 
     reservationSystem.printAllBooking();
     }
+
 
 }

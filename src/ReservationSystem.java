@@ -12,10 +12,12 @@ public class ReservationSystem {
     }
     public void printAllBooking(){
         for (Booking booking : bookings){
+            System.out.println(booking.getMoreGuests());
             System.out.println(booking.guest);
             System.out.println(booking.room);
             System.out.println(booking.startDate);
             System.out.println(booking.endDate);
+            System.out.println(booking.typeOfVacation);
         }
     }
 

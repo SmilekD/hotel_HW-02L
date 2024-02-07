@@ -10,6 +10,9 @@ public class Guest {
         this.surname = surname;
         this.birhdate = birhdate;
     }
+    public String getFullName(){
+        return name + " " + surname;
+    }
 
     public String getName() {
         return name;
