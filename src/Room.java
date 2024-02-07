@@ -1,6 +1,6 @@
 public class Room {
-    int numberOfBeds, pricePerNight, roomNumber;
-    boolean balcony, seeSight;
+    private int numberOfBeds, pricePerNight, roomNumber;
+    private boolean balcony, seeSight;
 
     public Room(int roomNumber,int numberOfBeds, int pricePerNight, boolean balcony,
                 boolean seeSight) {

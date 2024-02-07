@@ -1,9 +1,9 @@
 import java.time.LocalDate;
 
 public class Guest {
-    String name;
-    String surname;
-    LocalDate birhdate;
+    private String name;
+    private String surname;
+    private LocalDate birhdate;
 
     public Guest(String name, String surname, LocalDate birhdate) {
         this.name = name;
