@@ -37,4 +37,9 @@ public class Guest {
     public void setBirhdate(LocalDate birhdate) {
         this.birhdate = birhdate;
     }
+
+    @Override
+    public String toString() {
+        return name + surname;
+    }
 }

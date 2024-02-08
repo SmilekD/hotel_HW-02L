@@ -45,4 +45,11 @@ public class Room {
     public void setSeeSight(boolean seeSight) {
         this.seeSight = seeSight;
     }
+
+    @Override
+    public String toString() {
+        return "Pokoj " +
+                + roomNumber;
+    }
+
 }

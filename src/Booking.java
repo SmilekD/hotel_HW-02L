@@ -1,12 +1,14 @@
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
 public class Booking {
     Room room;
+    private List<Guest> moreGuests;
     Guest guest;
-    List<Guest> moreGuests;
-    Date startDate;
-    Date endDate;
+    LocalDate startDate;
+    LocalDate endDate;
     String typeOfVacation;
 
     enum vacationType{
@@ -21,14 +23,6 @@ public class Booking {
         this.room = room;
     }
 
-    public Guest getGuest() {
-        return guest;
-    }
-
-    public void setGuest(Guest guest) {
-        this.guest = guest;
-    }
-
     public List<Guest> getMoreGuests() {
         return moreGuests;
     }
@@ -37,35 +31,47 @@ public class Booking {
         this.moreGuests = moreGuests;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public Booking(Room room, Guest guest, Date startDate, Date endDate,
-                   String vacationType) {
-        this.room = room;
-        this.guest = guest;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-    public Booking(Room room, List<Guest> moreGuests, Date startDate, Date endDate,
+    public Booking(Room room, List<Guest> moreGuests, LocalDate startDate, LocalDate endDate,
                    String typeOfVacation) {
         this.room = room;
         this.moreGuests = moreGuests;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.typeOfVacation = typeOfVacation;
+    }
+    public int getNumberOfGuests(){
+        return moreGuests.size();
+    }
+
+    public long getBookingLength(){
+        return ChronoUnit.DAYS.between(startDate,endDate);
+    }
+
+    public int getPrice(){
+        long numberOfNights = ChronoUnit.DAYS.between(startDate, endDate);
+        return (int) (numberOfNights * room.getPricePerNight());
+    }
+
+    @Override
+    public String toString() {
+        return startDate+" až "+endDate+": "+moreGuests.get(0).getFullName()+ " ("+moreGuests.get(0).getBirhdate()+")"+" ["
+                +moreGuests.size()+" , "+room.isSeeSight()+"]"+" za cenu: "+room.getPricePerNight();
     }
 }
 
